@@ -24,20 +24,20 @@ window.GC = window.GC || {};
     // been stored on the server too)
     // =========================================================================
     var readOnlySettings = {
-        fileRevision : 210,
+        fileRevision : 211,
 
         // See the toString method for the rendering template
         version : {
-            major : 0,
-            minor : 1,
-            build : 3,
-            state : "beta", // dev|alpha|beta|rc|r
+            major : 1,
+            minor : 0,
+            build : 0,
+            state : "", // dev|alpha|beta|rc|r
 
             asString : function() {
                 return  this.major + "." +
                         this.minor + "." +
-                        this.build + "-" +
-                        this.state;
+                        this.build +
+                        (this.state ? "-" + this.state : "");
             }
         },
 
@@ -50,8 +50,8 @@ window.GC = window.GC || {};
         mouseTrackingEnabled : false,
 
         // set to true to enable the editing of the parents in the header
-        patientFamilyHistoryEditable : false,
-        patientDataEditable : false
+        patientFamilyHistoryEditable : true,
+        patientDataEditable : true
     };
 
     // =========================================================================
@@ -84,7 +84,7 @@ window.GC = window.GC || {};
         initialView : "graphs", // graphs | table | parent
 
         // ref: http://arshaw.com/xdate/#Formatting
-        dateFormat : "ddMMMyyyy",
+        dateFormat : "MMM dd yyyy",
         timeFormat : "h:mm TT",
         timeInterval : {
             "Years"   : "y",

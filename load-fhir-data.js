@@ -38,7 +38,8 @@ GC.get_data = function() {
     // Data loading ------------------------------------------------------------
 
     function fetchFamilyHistory(client) {
-        return client.request("FamilyMemberHistory?patient=" + client.patient.id, {
+        let accessToken = sessionStorage.getItem("accessToken");
+        return client.request({ url: "FamilyMemberHistory?patient=" + client.patient.id, headers: { authorization: accessToken }}, {
             pageLimit: 0,
             flat: true
         }).catch(function() {
@@ -61,14 +62,20 @@ GC.get_data = function() {
             'http://loinc.org|37362-1', // bone age
             'http://loinc.org|11884-4'  // gestAge
         ].join(","));
-        return client.request("Observation?" + query, {
+
+        let accessToken = sessionStorage.getItem("accessToken");
+        return client.request({url: "Observation?" + query, headers: { authorization: accessToken }}, {
             pageLimit: 0,   // get all pages
             flat     : true // return flat array of Observation resources
         });
     }
 
     function fetchPatient(client) {
-        return client.patient.read();
+        let accessToken = sessionStorage.getItem("accessToken");
+        return client.request({
+            url: "Patient/" + client.patient.id,
+            headers: { authorization: accessToken }
+        });
     }
 
     function fetchAll(client) {

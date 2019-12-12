@@ -1,8 +1,8 @@
 {
   "name": "growthchart",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "scripts": {
-    "serve": "http-server -p 9000 -c-1",
+    "serve": "http-server -p 7000 -c-1",
     "start": "npm run serve"
   },
   "dependencies": {
@@ -10,6 +10,7 @@
     "fhirclient": "^2.0.7"
   },
   "devDependencies": {
-    "http-server": "^0.10.0"
+    "http-server": "^0.10.0",
+    "nodemon": "^2.0.2"
   }
 }
