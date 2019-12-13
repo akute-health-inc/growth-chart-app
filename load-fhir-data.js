@@ -125,7 +125,7 @@ GC.get_data = function() {
     function processFamilyHistories(client, patient, familyHistories) {
         $.each(familyHistories, function(index, fh) {
             if (fh.resourceType === "FamilyMemberHistory") {
-                var code = fh.relationship.coding[0].code;
+                var code = fh.relationship && fh.relationship.coding && fh.relationship.coding[0] && fh.relationship.coding[0].code;
                 $.each(fh.extension || [], function(index2, ext){
                     if (ext.url === "http://fhir-registry.smarthealthit.org/StructureDefinition/family-history#height") {
                         var ht = client.units.cm(ext.valueQuantity);
